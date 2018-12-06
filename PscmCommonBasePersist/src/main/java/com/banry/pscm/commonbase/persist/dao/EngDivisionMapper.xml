@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.banry.pscm.commonbase.persist.dao.EngDivisionMapper">
+  <resultMap id="BaseResultMap" type="com.banry.pscm.commonbase.service.biz.EngDivision">
+    <id column="div_item_code" jdbcType="VARCHAR" property="divItemCode" />
+    <result column="div_name" jdbcType="VARCHAR" property="divName" />
+    <result column="skill" jdbcType="VARCHAR" property="skill" />
+    <result column="div_level" jdbcType="CHAR" property="divLevel" />
+    <result column="parent_div_item_code" jdbcType="VARCHAR" property="parentDivItemCode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    div_item_code, div_name, skill, div_level, parent_div_item_code
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from eng_division
+    where div_item_code = #{divItemCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from eng_division
+    where div_item_code = #{divItemCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.banry.pscm.commonbase.service.biz.EngDivision">
+    insert into eng_division (div_item_code, div_name, skill, 
+      div_level, parent_div_item_code)
+    values (#{divItemCode,jdbcType=VARCHAR}, #{divName,jdbcType=VARCHAR}, #{skill,jdbcType=VARCHAR}, 
+      #{divLevel,jdbcType=CHAR}, #{parentDivItemCode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.banry.pscm.commonbase.service.biz.EngDivision">
+    insert into eng_division
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="divItemCode != null">
+        div_item_code,
+      </if>
+      <if test="divName != null">
+        div_name,
+      </if>
+      <if test="skill != null">
+        skill,
+      </if>
+      <if test="divLevel != null">
+        div_level,
+      </if>
+      <if test="parentDivItemCode != null">
+        parent_div_item_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="divItemCode != null">
+        #{divItemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="divName != null">
+        #{divName,jdbcType=VARCHAR},
+      </if>
+      <if test="skill != null">
+        #{skill,jdbcType=VARCHAR},
+      </if>
+      <if test="divLevel != null">
+        #{divLevel,jdbcType=CHAR},
+      </if>
+      <if test="parentDivItemCode != null">
+        #{parentDivItemCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.banry.pscm.commonbase.service.biz.EngDivision">
+    update eng_division
+    <set>
+      <if test="divName != null">
+        div_name = #{divName,jdbcType=VARCHAR},
+      </if>
+      <if test="skill != null">
+        skill = #{skill,jdbcType=VARCHAR},
+      </if>
+      <if test="divLevel != null">
+        div_level = #{divLevel,jdbcType=CHAR},
+      </if>
+      <if test="parentDivItemCode != null">
+        parent_div_item_code = #{parentDivItemCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where div_item_code = #{divItemCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.banry.pscm.commonbase.service.biz.EngDivision">
+    update eng_division
+    set div_name = #{divName,jdbcType=VARCHAR},
+      skill = #{skill,jdbcType=VARCHAR},
+      div_level = #{divLevel,jdbcType=CHAR},
+      parent_div_item_code = #{parentDivItemCode,jdbcType=VARCHAR}
+    where div_item_code = #{divItemCode,jdbcType=VARCHAR}
+  </update>
+</mapper>

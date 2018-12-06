@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.banry.pscm.commonbase.persist.dao.SubDivWorkMapper">
+  <resultMap id="BaseResultMap" type="com.banry.pscm.commonbase.service.biz.SubDivWork">
+    <id column="sub_div_code" jdbcType="VARCHAR" property="subDivCode" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="charact_des" jdbcType="VARCHAR" property="charactDes" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
+    <result column="number" jdbcType="DOUBLE" property="number" />
+    <result column="comp_unit_price" jdbcType="DOUBLE" property="compUnitPrice" />
+    <result column="temporary_measure_price" jdbcType="DOUBLE" property="temporaryMeasurePrice" />
+    <result column="quota_manual_fee" jdbcType="DOUBLE" property="quotaManualFee" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    sub_div_code, name, charact_des, unit, number, comp_unit_price, temporary_measure_price, 
+    quota_manual_fee
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sub_div_work
+    where sub_div_code = #{subDivCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from sub_div_work
+    where sub_div_code = #{subDivCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.banry.pscm.commonbase.service.biz.SubDivWork">
+    insert into sub_div_work (sub_div_code, name, charact_des, 
+      unit, number, comp_unit_price, 
+      temporary_measure_price, quota_manual_fee)
+    values (#{subDivCode,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{charactDes,jdbcType=VARCHAR}, 
+      #{unit,jdbcType=VARCHAR}, #{number,jdbcType=DOUBLE}, #{compUnitPrice,jdbcType=DOUBLE}, 
+      #{temporaryMeasurePrice,jdbcType=DOUBLE}, #{quotaManualFee,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.banry.pscm.commonbase.service.biz.SubDivWork">
+    insert into sub_div_work
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="subDivCode != null">
+        sub_div_code,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="charactDes != null">
+        charact_des,
+      </if>
+      <if test="unit != null">
+        unit,
+      </if>
+      <if test="number != null">
+        number,
+      </if>
+      <if test="compUnitPrice != null">
+        comp_unit_price,
+      </if>
+      <if test="temporaryMeasurePrice != null">
+        temporary_measure_price,
+      </if>
+      <if test="quotaManualFee != null">
+        quota_manual_fee,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="subDivCode != null">
+        #{subDivCode,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="charactDes != null">
+        #{charactDes,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=DOUBLE},
+      </if>
+      <if test="compUnitPrice != null">
+        #{compUnitPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="temporaryMeasurePrice != null">
+        #{temporaryMeasurePrice,jdbcType=DOUBLE},
+      </if>
+      <if test="quotaManualFee != null">
+        #{quotaManualFee,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.banry.pscm.commonbase.service.biz.SubDivWork">
+    update sub_div_work
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="charactDes != null">
+        charact_des = #{charactDes,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null">
+        number = #{number,jdbcType=DOUBLE},
+      </if>
+      <if test="compUnitPrice != null">
+        comp_unit_price = #{compUnitPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="temporaryMeasurePrice != null">
+        temporary_measure_price = #{temporaryMeasurePrice,jdbcType=DOUBLE},
+      </if>
+      <if test="quotaManualFee != null">
+        quota_manual_fee = #{quotaManualFee,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where sub_div_code = #{subDivCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.banry.pscm.commonbase.service.biz.SubDivWork">
+    update sub_div_work
+    set name = #{name,jdbcType=VARCHAR},
+      charact_des = #{charactDes,jdbcType=VARCHAR},
+      unit = #{unit,jdbcType=VARCHAR},
+      number = #{number,jdbcType=DOUBLE},
+      comp_unit_price = #{compUnitPrice,jdbcType=DOUBLE},
+      temporary_measure_price = #{temporaryMeasurePrice,jdbcType=DOUBLE},
+      quota_manual_fee = #{quotaManualFee,jdbcType=DOUBLE}
+    where sub_div_code = #{subDivCode,jdbcType=VARCHAR}
+  </update>
+</mapper>

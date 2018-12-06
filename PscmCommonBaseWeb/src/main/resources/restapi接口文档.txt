@@ -1,0 +1,59 @@
+路径前缀：localhost:8080
+
+访问路径：
+	例，根据code（code=1.1）查找工程划分，访问路径为：localhost:8080/engdivision/findbycode?code=1.1
+
+设置公共应用库：
+             公共库有两个类型:
+                        一个是公共目录库，一个是公共业务库
+                       公共目录库只有一个库，里面一张表，保存公共业务库目录，属于不同的 专业+来源
+                       公共业务库是一个具体的 专业+来源 的行业知识库
+                       
+             所以调用公共库RestAPI时候，需要设置当前使用的 专业+来源 库的名称，以便MyBatis能连接到正确的 公共业务库 来访问数据                     
+        
+    RestAPI:
+             设置当前使用的数据源名称 :       /dds/setdsname?dsname=<ds_name>
+              获取当前正在使用的数据源名称:    /dds/getdsname
+
+              调用  /dds/setdsname?dsname=<ds_name> RestAPI后悔设置当前Session的公共业务库的名称，以后的RestAPI都会访问这个当前库，除非再次调用他修改当前的库名称
+
+工程划分_____EngDivisionController	
+	根据code(工程划分编码)查找工程划分————————————:/engdivision/findbycode?code=
+	根据code(工程划分编码)查找工程划分及其所有的子节点构成的树:/engdivision/findtreebycode?code=
+	根据divname(工程划分名)查找工程划分。这里要实现模糊查找— :/engdivision/findbydivname?divname=
+	查询所有工程划分—————————————————————:/engdivision/findall
+	
+工程危险源___HazardsController
+	根据code(危险源编码)查找危险源———————————:/hazards/findbycode?code=
+	根据divcode(划分编码)查找 n个 危险源————————:/hazards/findbydivcode?divcode=
+	根据divname(危险源名)查找危险源。这里要实现模糊查找 :/hazards/findbyname?divname=
+	查询所有危险源———————————————————:/hazards/findall
+	
+工程隐患_____HiddenTroubleController
+	根据code(隐患编码)查找隐患———————————:/hiddentrouble/findbycode?code=
+	根据divcode(划分编码)查找隐患————————— :/hiddentrouble/findbydivcode?divcode=
+	根据divname(隐患名)查找隐患。这里要实现模糊查找 :/hiddentrouble/findbyname?divname=
+	查询所有隐患——————————————————:/hiddentrouble/findall
+	
+施工方案_____ItemConsSchemeController
+	根据code(施工方案编码)查找施工方案——————————— :/itemconsscheme/findbycode?code=
+	根据divcode(划分编码)查找施工方案————————————:/itemconsscheme/findbydivcode?divcode=
+	根据divname（施工方案名）查找施工方案。这里要实现模糊查找:/itemconsscheme/findbydivname?divname=
+	查询所有施工方案———————————————————— :/itemconsscheme/findall
+	
+分项工程_____SubDivWorkController
+	根据code(分项工程编码)查找分项工程———————————:/subdivwork/findbycode?code=
+	根据divname(分项工程名)查找分项工程。这里要实现模糊查找 :/subdivwork/findbydivname?divname=
+	查询所有分项工程————————————————————:/subdivwork/findall
+	
+分项工程资源_SubDivWorkQuotaController	
+	根据code(分项工程资源编码)查找分项工程资源—:/subdivworkquota/findbycode?code=
+	根据divcode(划分编码)查找分项工程资源——— :/subdivworkquota/findbydivcode?divcode=
+	根据quotacode(定额编码)查找分项工程资源—— :/subdivworkquota/findbyquotacode?quotacode=
+	根据itemname(分项工程名称)查找分项工程资源—:/subdivworkquota/findbyitemname?itemname=
+	根据resourcestype(资源类型)查找分项工程资源 :/subdivworkquota/findbyrestype?resourcestype=
+	查询所有分项工程资源————————————:/subdivworkquota/findall
+	
+注意：访问时，路径、参数名、参数值都正确才能查询出数据。
+
+其他增删改操作接口写好了，但没有写controller。因为要求restapi不提供写操作，只提供读操作。

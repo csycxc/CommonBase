@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="PscmCommonBaseBiz" />
+        <module name="PscmCommonBasePersist" />
+        <module name="PscmCommonBaseService" />
+        <module name="PscmCommonBaseWeb" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="PscmCommonBase" target="1.8" />
+      <module name="PscmCommonBaseBiz" target="1.8" />
+      <module name="PscmCommonBasePersist" target="1.8" />
+      <module name="PscmCommonBaseService" target="1.8" />
+      <module name="PscmCommonBaseWeb" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

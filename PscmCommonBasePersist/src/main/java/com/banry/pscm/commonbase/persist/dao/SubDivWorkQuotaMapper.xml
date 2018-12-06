@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.banry.pscm.commonbase.persist.dao.SubDivWorkQuotaMapper">
+  <resultMap id="BaseResultMap" type="com.banry.pscm.commonbase.service.biz.SubDivWorkQuota">
+    <id column="res_code" jdbcType="VARCHAR" property="resCode" />
+    <result column="sub_div_code" jdbcType="VARCHAR" property="subDivCode" />
+    <result column="quota_code" jdbcType="VARCHAR" property="quotaCode" />
+    <result column="item_name" jdbcType="VARCHAR" property="itemName" />
+    <result column="item_detail_name" jdbcType="VARCHAR" property="itemDetailName" />
+    <result column="resources_type" jdbcType="VARCHAR" property="resourcesType" />
+    <result column="res_type_level" jdbcType="VARCHAR" property="resTypeLevel" />
+    <result column="res_detail_type" jdbcType="VARCHAR" property="resDetailType" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
+    <result column="used_num" jdbcType="DOUBLE" property="usedNum" />
+    <result column="loss_rate" jdbcType="DOUBLE" property="lossRate" />
+    <result column="save_excess_rate" jdbcType="DOUBLE" property="saveExcessRate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    res_code, sub_div_code, quota_code, item_name, item_detail_name, resources_type, 
+    res_type_level, res_detail_type, unit, used_num, loss_rate, save_excess_rate
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sub_div_work_quota
+    where res_code = #{resCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from sub_div_work_quota
+    where res_code = #{resCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.banry.pscm.commonbase.service.biz.SubDivWorkQuota">
+    insert into sub_div_work_quota (res_code, sub_div_code, quota_code, 
+      item_name, item_detail_name, resources_type, 
+      res_type_level, res_detail_type, unit, 
+      used_num, loss_rate, save_excess_rate
+      )
+    values (#{resCode,jdbcType=VARCHAR}, #{subDivCode,jdbcType=VARCHAR}, #{quotaCode,jdbcType=VARCHAR}, 
+      #{itemName,jdbcType=VARCHAR}, #{itemDetailName,jdbcType=VARCHAR}, #{resourcesType,jdbcType=VARCHAR}, 
+      #{resTypeLevel,jdbcType=VARCHAR}, #{resDetailType,jdbcType=VARCHAR}, #{unit,jdbcType=VARCHAR}, 
+      #{usedNum,jdbcType=DOUBLE}, #{lossRate,jdbcType=DOUBLE}, #{saveExcessRate,jdbcType=DOUBLE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.banry.pscm.commonbase.service.biz.SubDivWorkQuota">
+    insert into sub_div_work_quota
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="resCode != null">
+        res_code,
+      </if>
+      <if test="subDivCode != null">
+        sub_div_code,
+      </if>
+      <if test="quotaCode != null">
+        quota_code,
+      </if>
+      <if test="itemName != null">
+        item_name,
+      </if>
+      <if test="itemDetailName != null">
+        item_detail_name,
+      </if>
+      <if test="resourcesType != null">
+        resources_type,
+      </if>
+      <if test="resTypeLevel != null">
+        res_type_level,
+      </if>
+      <if test="resDetailType != null">
+        res_detail_type,
+      </if>
+      <if test="unit != null">
+        unit,
+      </if>
+      <if test="usedNum != null">
+        used_num,
+      </if>
+      <if test="lossRate != null">
+        loss_rate,
+      </if>
+      <if test="saveExcessRate != null">
+        save_excess_rate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="resCode != null">
+        #{resCode,jdbcType=VARCHAR},
+      </if>
+      <if test="subDivCode != null">
+        #{subDivCode,jdbcType=VARCHAR},
+      </if>
+      <if test="quotaCode != null">
+        #{quotaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="itemName != null">
+        #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemDetailName != null">
+        #{itemDetailName,jdbcType=VARCHAR},
+      </if>
+      <if test="resourcesType != null">
+        #{resourcesType,jdbcType=VARCHAR},
+      </if>
+      <if test="resTypeLevel != null">
+        #{resTypeLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="resDetailType != null">
+        #{resDetailType,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="usedNum != null">
+        #{usedNum,jdbcType=DOUBLE},
+      </if>
+      <if test="lossRate != null">
+        #{lossRate,jdbcType=DOUBLE},
+      </if>
+      <if test="saveExcessRate != null">
+        #{saveExcessRate,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.banry.pscm.commonbase.service.biz.SubDivWorkQuota">
+    update sub_div_work_quota
+    <set>
+      <if test="subDivCode != null">
+        sub_div_code = #{subDivCode,jdbcType=VARCHAR},
+      </if>
+      <if test="quotaCode != null">
+        quota_code = #{quotaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="itemName != null">
+        item_name = #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemDetailName != null">
+        item_detail_name = #{itemDetailName,jdbcType=VARCHAR},
+      </if>
+      <if test="resourcesType != null">
+        resources_type = #{resourcesType,jdbcType=VARCHAR},
+      </if>
+      <if test="resTypeLevel != null">
+        res_type_level = #{resTypeLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="resDetailType != null">
+        res_detail_type = #{resDetailType,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+      <if test="usedNum != null">
+        used_num = #{usedNum,jdbcType=DOUBLE},
+      </if>
+      <if test="lossRate != null">
+        loss_rate = #{lossRate,jdbcType=DOUBLE},
+      </if>
+      <if test="saveExcessRate != null">
+        save_excess_rate = #{saveExcessRate,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where res_code = #{resCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.banry.pscm.commonbase.service.biz.SubDivWorkQuota">
+    update sub_div_work_quota
+    set sub_div_code = #{subDivCode,jdbcType=VARCHAR},
+      quota_code = #{quotaCode,jdbcType=VARCHAR},
+      item_name = #{itemName,jdbcType=VARCHAR},
+      item_detail_name = #{itemDetailName,jdbcType=VARCHAR},
+      resources_type = #{resourcesType,jdbcType=VARCHAR},
+      res_type_level = #{resTypeLevel,jdbcType=VARCHAR},
+      res_detail_type = #{resDetailType,jdbcType=VARCHAR},
+      unit = #{unit,jdbcType=VARCHAR},
+      used_num = #{usedNum,jdbcType=DOUBLE},
+      loss_rate = #{lossRate,jdbcType=DOUBLE},
+      save_excess_rate = #{saveExcessRate,jdbcType=DOUBLE}
+    where res_code = #{resCode,jdbcType=VARCHAR}
+  </update>
+</mapper>

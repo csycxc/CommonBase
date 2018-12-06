@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.banry.pscm.commonbase.persist.dao.ItemConsSchemeMapper">
+  <resultMap id="BaseResultMap" type="com.banry.pscm.commonbase.service.biz.ItemConsScheme">
+    <id column="scheme_code" jdbcType="VARCHAR" property="schemeCode" />
+    <result column="div_item_code" jdbcType="VARCHAR" property="divItemCode" />
+    <result column="div_level" jdbcType="CHAR" property="divLevel" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="sch_type" jdbcType="VARCHAR" property="schType" />
+    <result column="paths" jdbcType="VARCHAR" property="paths" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    scheme_code, div_item_code, div_level, name, sch_type, paths, description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from item_cons_scheme
+    where scheme_code = #{schemeCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from item_cons_scheme
+    where scheme_code = #{schemeCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.banry.pscm.commonbase.service.biz.ItemConsScheme">
+    insert into item_cons_scheme (scheme_code, div_item_code, div_level, 
+      name, sch_type, paths, 
+      description)
+    values (#{schemeCode,jdbcType=VARCHAR}, #{divItemCode,jdbcType=VARCHAR}, #{divLevel,jdbcType=CHAR}, 
+      #{name,jdbcType=VARCHAR}, #{schType,jdbcType=VARCHAR}, #{paths,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.banry.pscm.commonbase.service.biz.ItemConsScheme">
+    insert into item_cons_scheme
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="schemeCode != null">
+        scheme_code,
+      </if>
+      <if test="divItemCode != null">
+        div_item_code,
+      </if>
+      <if test="divLevel != null">
+        div_level,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="schType != null">
+        sch_type,
+      </if>
+      <if test="paths != null">
+        paths,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="schemeCode != null">
+        #{schemeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="divItemCode != null">
+        #{divItemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="divLevel != null">
+        #{divLevel,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="schType != null">
+        #{schType,jdbcType=VARCHAR},
+      </if>
+      <if test="paths != null">
+        #{paths,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.banry.pscm.commonbase.service.biz.ItemConsScheme">
+    update item_cons_scheme
+    <set>
+      <if test="divItemCode != null">
+        div_item_code = #{divItemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="divLevel != null">
+        div_level = #{divLevel,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="schType != null">
+        sch_type = #{schType,jdbcType=VARCHAR},
+      </if>
+      <if test="paths != null">
+        paths = #{paths,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where scheme_code = #{schemeCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.banry.pscm.commonbase.service.biz.ItemConsScheme">
+    update item_cons_scheme
+    set div_item_code = #{divItemCode,jdbcType=VARCHAR},
+      div_level = #{divLevel,jdbcType=CHAR},
+      name = #{name,jdbcType=VARCHAR},
+      sch_type = #{schType,jdbcType=VARCHAR},
+      paths = #{paths,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR}
+    where scheme_code = #{schemeCode,jdbcType=VARCHAR}
+  </update>
+</mapper>

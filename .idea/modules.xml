@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/PscmCommonBase.iml" filepath="$PROJECT_DIR$/PscmCommonBase.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PscmCommonBaseBiz/PscmCommonBaseBiz.iml" filepath="$PROJECT_DIR$/PscmCommonBaseBiz/PscmCommonBaseBiz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PscmCommonBasePersist/PscmCommonBasePersist.iml" filepath="$PROJECT_DIR$/PscmCommonBasePersist/PscmCommonBasePersist.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PscmCommonBaseService/PscmCommonBaseService.iml" filepath="$PROJECT_DIR$/PscmCommonBaseService/PscmCommonBaseService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PscmCommonBaseWeb/PscmCommonBaseWeb.iml" filepath="$PROJECT_DIR$/PscmCommonBaseWeb/PscmCommonBaseWeb.iml" />
+    </modules>
+  </component>
+</project>

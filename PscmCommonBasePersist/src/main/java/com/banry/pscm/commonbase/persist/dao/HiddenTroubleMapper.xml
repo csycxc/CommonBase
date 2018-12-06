@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.banry.pscm.commonbase.persist.dao.HiddenTroubleMapper">
+  <resultMap id="BaseResultMap" type="com.banry.pscm.commonbase.service.biz.HiddenTrouble">
+    <id column="trouble_code" jdbcType="VARCHAR" property="troubleCode" />
+    <result column="div_item_code" jdbcType="VARCHAR" property="divItemCode" />
+    <result column="div_level" jdbcType="CHAR" property="divLevel" />
+    <result column="trobule_cate" jdbcType="VARCHAR" property="trobuleCate" />
+    <result column="trobule_level" jdbcType="VARCHAR" property="trobuleLevel" />
+    <result column="invest_item" jdbcType="VARCHAR" property="investItem" />
+    <result column="invest_content" jdbcType="VARCHAR" property="investContent" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    trouble_code, div_item_code, div_level, trobule_cate, trobule_level, invest_item, 
+    invest_content, description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from hidden_trouble
+    where trouble_code = #{troubleCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from hidden_trouble
+    where trouble_code = #{troubleCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.banry.pscm.commonbase.service.biz.HiddenTrouble">
+    insert into hidden_trouble (trouble_code, div_item_code, div_level, 
+      trobule_cate, trobule_level, invest_item, 
+      invest_content, description)
+    values (#{troubleCode,jdbcType=VARCHAR}, #{divItemCode,jdbcType=VARCHAR}, #{divLevel,jdbcType=CHAR}, 
+      #{trobuleCate,jdbcType=VARCHAR}, #{trobuleLevel,jdbcType=VARCHAR}, #{investItem,jdbcType=VARCHAR}, 
+      #{investContent,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.banry.pscm.commonbase.service.biz.HiddenTrouble">
+    insert into hidden_trouble
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="troubleCode != null">
+        trouble_code,
+      </if>
+      <if test="divItemCode != null">
+        div_item_code,
+      </if>
+      <if test="divLevel != null">
+        div_level,
+      </if>
+      <if test="trobuleCate != null">
+        trobule_cate,
+      </if>
+      <if test="trobuleLevel != null">
+        trobule_level,
+      </if>
+      <if test="investItem != null">
+        invest_item,
+      </if>
+      <if test="investContent != null">
+        invest_content,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="troubleCode != null">
+        #{troubleCode,jdbcType=VARCHAR},
+      </if>
+      <if test="divItemCode != null">
+        #{divItemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="divLevel != null">
+        #{divLevel,jdbcType=CHAR},
+      </if>
+      <if test="trobuleCate != null">
+        #{trobuleCate,jdbcType=VARCHAR},
+      </if>
+      <if test="trobuleLevel != null">
+        #{trobuleLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="investItem != null">
+        #{investItem,jdbcType=VARCHAR},
+      </if>
+      <if test="investContent != null">
+        #{investContent,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.banry.pscm.commonbase.service.biz.HiddenTrouble">
+    update hidden_trouble
+    <set>
+      <if test="divItemCode != null">
+        div_item_code = #{divItemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="divLevel != null">
+        div_level = #{divLevel,jdbcType=CHAR},
+      </if>
+      <if test="trobuleCate != null">
+        trobule_cate = #{trobuleCate,jdbcType=VARCHAR},
+      </if>
+      <if test="trobuleLevel != null">
+        trobule_level = #{trobuleLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="investItem != null">
+        invest_item = #{investItem,jdbcType=VARCHAR},
+      </if>
+      <if test="investContent != null">
+        invest_content = #{investContent,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where trouble_code = #{troubleCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.banry.pscm.commonbase.service.biz.HiddenTrouble">
+    update hidden_trouble
+    set div_item_code = #{divItemCode,jdbcType=VARCHAR},
+      div_level = #{divLevel,jdbcType=CHAR},
+      trobule_cate = #{trobuleCate,jdbcType=VARCHAR},
+      trobule_level = #{trobuleLevel,jdbcType=VARCHAR},
+      invest_item = #{investItem,jdbcType=VARCHAR},
+      invest_content = #{investContent,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR}
+    where trouble_code = #{troubleCode,jdbcType=VARCHAR}
+  </update>
+</mapper>
